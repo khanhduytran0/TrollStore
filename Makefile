@@ -85,6 +85,18 @@ make_trollstore_lite:
 	@cp ./RootHelper/.theos/obj/trollstorehelper_lite ./TrollStoreLite/Resources/trollstorehelper
 	@$(MAKE) -C ./TrollStoreLite package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
 
+make_trollstore_lite_ipa:
+	@$(MAKE) -C ./RootHelper DEBUG=0 TROLLSTORE_LITE=1
+	@rm -rf ./TrollStoreLite/Resources/trollstorehelper
+	@cp ./RootHelper/.theos/obj/trollstorehelper_lite ./TrollStoreLite/Resources/trollstorehelper
+	@$(MAKE) -C ./TrollStoreLite package FINALPACKAGE=1
+	@$(MAKE) -C ./RootHelper TROLLSTORE_LITE=1 clean
+	@$(MAKE) -C ./TrollStoreLite clean
+	@$(MAKE) -C ./RootHelper DEBUG=0 TROLLSTORE_LITE=1 SIGN_WITH_ADHOC_FLAG=1 PACKAGE_FORMAT=ipa
+	@rm -rf ./TrollStoreLite/Resources/trollstorehelper
+	@cp ./RootHelper/.theos/obj/trollstorehelper_lite ./TrollStoreLite/Resources/trollstorehelper
+	@$(MAKE) -C ./TrollStoreLite package FINALPACKAGE=1 SIGN_WITH_ADHOC_FLAG=1 PACKAGE_FORMAT=ipa
+
 else
 make_trollstore_lite:
 	@$(MAKE) -C ./TrollStoreLite $(MAKECMDGOALS)

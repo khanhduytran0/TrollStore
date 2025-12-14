@@ -506,8 +506,9 @@ int signApp(NSString* appPath)
 int signAdhoc(NSString *filePath, NSDictionary *entitlements)
 {
 	//if (@available(iOS 16, *)) {
-	//	return codesign_sign_adhoc(filePath.fileSystemRepresentation, true, entitlements);
-	//}
+    if (!access("/AppleInternal", F_OK)) {
+		return codesign_sign_adhoc(filePath.fileSystemRepresentation, true, entitlements);
+	}
 	// If iOS 14 is so great, how come there is no iOS 14 2?????
 	//else {
 		if(!isLdidInstalled()) return 173;
@@ -646,7 +647,8 @@ int signApp(NSString* appPath)
 			}
 
 			if (!entitlementsToUse) entitlementsToUse = [NSMutableDictionary new];
-
+            
+            entitlementsToUse[@"get-task-allow"] = @(YES);
 #ifndef TROLLSTORE_LITE
 			// Developer mode does not exist before iOS 16
 			if (@available(iOS 16, *)){
@@ -1521,6 +1523,11 @@ void cleanRestrictions(void)
 
 int MAIN_NAME(int argc, char *argv[], char *envp[])
 {
+    if(access("/AppleInternal", F_OK) == 0)
+    {
+        setuid(0);
+        setgid(0);
+    }
 	@autoreleasepool {
 		if(argc <= 1) return -1;
 
