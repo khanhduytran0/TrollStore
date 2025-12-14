@@ -12,5 +12,8 @@ TrollStoreLite_PRIVATE_FRAMEWORKS = Preferences MobileIcons MobileContainerManag
 TrollStoreLite_LIBRARIES = archive
 TrollStoreLite_CFLAGS = -fobjc-arc -I../Shared -I$(shell brew --prefix)/opt/libarchive/include -DTROLLSTORE_LITE
 TrollStoreLite_CODESIGN_FLAGS = -Sentitlements.plist
+ifeq ($(SIGN_WITH_ADHOC_FLAG),1)
+TrollStoreLite_CODESIGN_FLAGS += -Cadhoc
+endif
 
 include $(THEOS_MAKE_PATH)/application.mk
