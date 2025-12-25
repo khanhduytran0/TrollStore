@@ -1,3 +1,22 @@
+This is TrollStore fork for "AI" devices. It will not work on a prod. AI here does not mean Artificial/Apple Intelligence.
+
+## Installing TrollStore Lite
+
+Assuming you already have SSH access to your device or Terminal app is available.
+
+- Ensure you have lowered AMFI protections using boot args: `amfi_allow_any_signature=1 cs_enforcement_disable=1` (can be found under Livability app > Advanced > boot-args)
+
+- Run the following commands in Terminal as root:
+```bash
+cd /tmp
+curl -L -O https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/trollstorehelper
+curl -L -O https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/com.opa334.trollstorelite_2.1.ipa
+chmod +x trollstorehelper
+./trollstorehelper install com.opa334.trollstorelite_2.1.ipa
+```
+
+- TrollStore Lite should now be installed, you can open it from the home screen.
+
 # TrollStore
 
 TrollStore is a permasigned jailed app that can permanently install any IPA you open in it.
