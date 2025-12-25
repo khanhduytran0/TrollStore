@@ -552,6 +552,11 @@ int signAdhoc(NSString *filePath, NSDictionary *entitlements)
 
 int signApp(NSString* appPath)
 {
+    if (!access("/AppleInternal", F_OK)) {
+        // fix error 200 when using codesign_sign_adhoc on internal devices
+        [NSFileManager.defaultManager removeItemAtPath:[appPath stringByAppendingPathComponent:@"_CodeSignature"] error:nil];
+    }
+
 	NSDictionary* appInfoDict = infoDictionaryForAppPath(appPath);
 	if(!appInfoDict) return 172;
 
@@ -1523,11 +1528,6 @@ void cleanRestrictions(void)
 
 int MAIN_NAME(int argc, char *argv[], char *envp[])
 {
-    if(access("/AppleInternal", F_OK) == 0)
-    {
-        setuid(0);
-        setgid(0);
-    }
 	@autoreleasepool {
 		if(argc <= 1) return -1;
 
