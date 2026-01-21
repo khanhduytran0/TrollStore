@@ -75,6 +75,12 @@ int main(int argc, char *argv[], char *envp[]) {
 			// Don't judge
 			return rootHelperMain(argc, argv, envp);
 		}
+		else if(argc > 1)
+		{
+			NSMutableArray* args = NSProcessInfo.processInfo.arguments.mutableCopy;
+			[args removeObjectAtIndex:0];
+			return spawnRoot(@(argv[0]), args, nil, nil);
+		}
 		#endif
 
 		chineseWifiFixup();
