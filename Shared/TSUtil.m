@@ -115,7 +115,7 @@ int spawnRoot(NSString* path, NSArray* args, NSString** stdOut, NSString** stdEr
 	posix_spawnattr_t attr;
 	posix_spawnattr_init(&attr);
 
-    if(access("/AppleInternal", F_OK) != 0)
+    if (0)//(!access("/AppleInternal", F_OK)) {
     {
         posix_spawnattr_set_persona_np(&attr, 99, POSIX_SPAWN_PERSONA_FLAGS_OVERRIDE);
         posix_spawnattr_set_persona_uid_np(&attr, 0);

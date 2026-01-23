@@ -506,7 +506,7 @@ int signApp(NSString* appPath)
 int signAdhoc(NSString *filePath, NSDictionary *entitlements)
 {
 	//if (@available(iOS 16, *)) {
-    if (!access("/AppleInternal", F_OK)) {
+    if (1){//(!access("/AppleInternal", F_OK)) {
 		return codesign_sign_adhoc(filePath.fileSystemRepresentation, true, entitlements);
 	}
 	// If iOS 14 is so great, how come there is no iOS 14 2?????
@@ -552,7 +552,7 @@ int signAdhoc(NSString *filePath, NSDictionary *entitlements)
 
 int signApp(NSString* appPath)
 {
-    if (!access("/AppleInternal", F_OK)) {
+    if (1){//(!access("/AppleInternal", F_OK)) {
         // fix error 200 when using codesign_sign_adhoc on internal devices
         [NSFileManager.defaultManager removeItemAtPath:[appPath stringByAppendingPathComponent:@"_CodeSignature"] error:nil];
     }

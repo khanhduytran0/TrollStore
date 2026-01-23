@@ -21,7 +21,9 @@ int main(int argc, char *argv[]) {
         rename(sudoPathTmp, sudoPath);
         return 0;
     }
-    if(access("/AppleInternal", F_OK) == 0 && getuid() != 0) {
+    setuid(0);
+    setgid(0);
+    if(getuid() != 0) {
         // Elevate privillege
         BOOL launched = launchHaxx(@[@(argv[0]), @"elevate-privilege"]);
         NSCAssert(launched, @"Failed to launch haxx to elevate privilege");
