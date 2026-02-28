@@ -1,6 +1,25 @@
-This is TrollStore fork for "AI" devices. It will not work on a prod. AI here does not mean Artificial/Apple Intelligence.
+This is TrollStore fork for "AI" devices and iPhone VM. It will not work on a prod. AI here does not mean Artificial/Apple Intelligence.
 
 ## Installing TrollStore Lite
+
+### For iPhone VM
+
+- Projects like [super-tart-vphone](https://github.com/wh1te4ever/super-tart-vphone) allows you to set up an iPhone VM on macOS with SSH access preconfigured. However, it doesn't come with `curl` or `wget` with SSL, so you need to download files manually.
+
+- In VM, open Safari and download [trollstorehelper](https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/trollstorehelper) and [TrollStoreLite tipa](https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/com.opa334.trollstorelite_2.1.ipa) (or you can transfer it via AFC)
+- Connect to device SSH and run the following commands
+```bash
+# IF: you download from Safari in VM
+cd "/var/mobile/Containers/Shared/AppGroup/*/File Provider Storage/Downloads"
+
+# IF: you use AFC to transfer files
+cd /var/mobile/Media
+
+chmod +x trollstorehelper
+./trollstorehelper install com.opa334.trollstorelite_2.1.ipa
+```
+
+### For "AI" devices
 
 Assuming you already have SSH access to your device or Terminal app is available.
 
