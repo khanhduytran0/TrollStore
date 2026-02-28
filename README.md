@@ -10,7 +10,7 @@ This is TrollStore fork for "AI" devices and iPhone VM. It will not work on a pr
 - Connect to device SSH and run the following commands
 ```bash
 # IF: you download from Safari in VM
-cd "/var/mobile/Containers/Shared/AppGroup/*/File Provider Storage/Downloads"
+cd /var/mobile/Containers/Shared/AppGroup/*/File\ Provider\ Storage/Downloads
 
 # IF: you use AFC to transfer files
 cd /var/mobile/Media
