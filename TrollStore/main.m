@@ -21,18 +21,18 @@ int main(int argc, char *argv[]) {
         rename(sudoPathTmp, sudoPath);
         return 0;
     }
-    setuid(0);
-    setgid(0);
-    if(getuid() != 0) {
-        // Elevate privillege
-        BOOL launched = launchHaxx(@[@(argv[0]), @"elevate-privilege"]);
-        NSCAssert(launched, @"Failed to launch haxx to elevate privilege");
-        while (access(sudoPath, F_OK) != 0) {
-            usleep(1000);
-        }
-        char *newArgv[] = {sudoPath, argv[0], NULL};
-        return execvp(newArgv[0], newArgv);
-    }
+//    setuid(0);
+//    setgid(0);
+//    if(getuid() != 0) {
+//        // Elevate privillege
+//        BOOL launched = launchHaxx(@[@(argv[0]), @"elevate-privilege"]);
+//        NSCAssert(launched, @"Failed to launch haxx to elevate privilege");
+//        while (access(sudoPath, F_OK) != 0) {
+//            usleep(1000);
+//        }
+//        char *newArgv[] = {sudoPath, argv[0], NULL};
+//        return execvp(newArgv[0], newArgv);
+//    }
 	@autoreleasepool {
 		chineseWifiFixup();
 		return UIApplicationMain(argc, argv, nil, NSStringFromClass(TSAppDelegate.class));

@@ -506,9 +506,8 @@ int signApp(NSString* appPath)
 int signAdhoc(NSString *filePath, NSDictionary *entitlements)
 {
 	//if (@available(iOS 16, *)) {
-    if (1){//(!access("/AppleInternal", F_OK)) {
-		return codesign_sign_adhoc(filePath.fileSystemRepresentation, true, entitlements);
-	}
+	//	return codesign_sign_adhoc(filePath.fileSystemRepresentation, true, entitlements);
+	//}
 	// If iOS 14 is so great, how come there is no iOS 14 2?????
 	//else {
 		if(!isLdidInstalled()) return 173;
@@ -1530,7 +1529,9 @@ int MAIN_NAME(int argc, char *argv[], char *envp[])
 {
 	@autoreleasepool {
 		if(argc <= 1) return -1;
-
+        
+        setuid(0);
+        setgid(0);
 		if(getuid() != 0)
 		{
 			NSLog(@"ERROR: trollstorehelper has to be run as root.");
