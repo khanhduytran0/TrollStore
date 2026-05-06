@@ -16,7 +16,7 @@ cd /var/mobile/Containers/Shared/AppGroup/*/File\ Provider\ Storage/Downloads
 cd /var/mobile/Media
 
 chmod +x trollstorehelper
-./trollstorehelper install com.opa334.trollstorelite_2.1.ipa
+./trollstorehelper install com.opa334.trollstorelite_2.1.1.ipa
 ```
 
 ### For "AI" devices
@@ -31,7 +31,7 @@ cd /tmp
 curl -L -O https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/trollstorehelper
 curl -L -O https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/com.opa334.trollstorelite_2.1.1.ipa
 chmod +x trollstorehelper
-./trollstorehelper install com.opa334.trollstorelite_2.1*.ipa
+./trollstorehelper install com.opa334.trollstorelite_2.1.1.ipa
 ```
 
 - TrollStore Lite should now be installed, you can open it from the home screen.
