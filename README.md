@@ -6,7 +6,7 @@ This is TrollStore fork for "AI" devices and iPhone VM. It will not work on a pr
 
 - Projects like [super-tart-vphone](https://github.com/wh1te4ever/super-tart-vphone) allows you to set up an iPhone VM on macOS with SSH access preconfigured. However, it doesn't come with `curl` or `wget` with SSL, so you need to download files manually.
 
-- In VM, open Safari and download [trollstorehelper](https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/trollstorehelper) and [TrollStoreLite tipa](https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/com.opa334.trollstorelite_2.1.ipa) (or you can transfer it via AFC)
+- In VM, open Safari and download [trollstorehelper](https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/trollstorehelper) and [TrollStoreLite tipa](https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/com.opa334.trollstorelite_2.1.1.ipa) (or you can transfer it via AFC)
 - Connect to device SSH and run the following commands
 ```bash
 # IF: you download from Safari in VM
@@ -29,9 +29,9 @@ Assuming you already have SSH access to your device or Terminal app is available
 ```bash
 cd /tmp
 curl -L -O https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/trollstorehelper
-curl -L -O https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/com.opa334.trollstorelite_2.1.ipa
+curl -L -O https://github.com/khanhduytran0/TrollStore/releases/download/2.1-ai/com.opa334.trollstorelite_2.1.1.ipa
 chmod +x trollstorehelper
-./trollstorehelper install com.opa334.trollstorelite_2.1.ipa
+./trollstorehelper install com.opa334.trollstorelite_2.1*.ipa
 ```
 
 - TrollStore Lite should now be installed, you can open it from the home screen.
