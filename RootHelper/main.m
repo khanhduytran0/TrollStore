@@ -244,7 +244,8 @@ void setTSURLSchemeState(BOOL newState, NSString* customAppPath)
 	}
 }
 
-#ifdef TROLLSTORE_LITE
+//#ifdef TROLLSTORE_LITE
+#if 0
 
 BOOL isLdidInstalled(void)
 {
@@ -1688,6 +1689,7 @@ int MAIN_NAME(int argc, char *argv[], char *envp[])
 			}
 			uninstallTrollStore(YES);
 		}
+#endif
 		else if([cmd isEqualToString:@"install-ldid"])
 		{
 			//if (@available(iOS 16, *)) {} else {
@@ -1697,6 +1699,7 @@ int MAIN_NAME(int argc, char *argv[], char *envp[])
 				installLdid(ldidPath, ldidVersion);
 			//}
 		}
+#ifndef TROLLSTORE_LITE
 		else if([cmd isEqualToString:@"install-persistence-helper"])
 		{
 			if(args.count < 2) return -3;
