@@ -421,7 +421,11 @@ NSString* trollStorePath()
 
 NSString* trollStoreAppPath()
 {
-	return [trollStorePath() stringByAppendingPathComponent:@"TrollStore.app"];
+#ifdef TROLLSTORE_LITE
+    return [trollStorePath() stringByAppendingPathComponent:@"TrollStoreLite.app"];
+#else
+    return [trollStorePath() stringByAppendingPathComponent:@"TrollStore.app"];
+#endif
 }
 
 BOOL isRemovableSystemApp(NSString* appId)
