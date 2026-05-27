@@ -506,12 +506,12 @@ int signApp(NSString* appPath)
 #else
 int signAdhoc(NSString *filePath, NSDictionary *entitlements)
 {
-	//if (@available(iOS 16, *)) {
-	//	return codesign_sign_adhoc(filePath.fileSystemRepresentation, true, entitlements);
-	//}
+	if (!isLdidInstalled()) {
+		return codesign_sign_adhoc(filePath.fileSystemRepresentation, true, entitlements);
+	}
 	// If iOS 14 is so great, how come there is no iOS 14 2?????
 	//else {
-		if(!isLdidInstalled()) return 173;
+		//if(!isLdidInstalled()) return 173;
 
 		NSString *entitlementsPath = nil;
 		NSString *signArg = @"-s";
@@ -1067,6 +1067,15 @@ int installApp(NSString* appPackagePath, BOOL sign, BOOL force, BOOL isTSUpdate,
 			return 181;
 		}
 	}
+
+    // Add suid bit to all root binaries in the bundle
+    NSDictionary *infoDict = infoDictionaryForAppPath(updatedAppURL.path);
+    for(NSString *key in infoDict[@"TSRootBinaries"])
+    {
+        NSString *binaryPath = [updatedAppURL.path stringByAppendingPathComponent:key];
+        chown(binaryPath.fileSystemRepresentation, 0, 0);
+        chmod(binaryPath.fileSystemRepresentation, 06755);
+    }
 
 	// Handle developer mode after installing and registering the app, to ensure that we
 	// don't arm developer mode but then fail to install the app

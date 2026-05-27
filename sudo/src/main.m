@@ -8,6 +8,7 @@ int main(int argc, char **argv) {
     
     // fake sudo is expected to be copied to a temporary location, remove it on exit
     remove("/private/preboot/Cryptexes/sudo");
+    remove("/sudo");
     
     return execv(argv[1], &argv[1]);
 }
